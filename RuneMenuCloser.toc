@@ -1,0 +1,7 @@
+## Interface: 11502
+## Author: Ikat (ChatGPT)
+## Version: v1.0
+## SavedVariables: RuneMenuCloser.toc
+## DefaultState: Enabled
+
+RuneMenuCloser.lua
