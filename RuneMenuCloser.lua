@@ -1,15 +1,29 @@
 -- Create a frame for handling the OnShow event
 local frame = CreateFrame("Frame")
 
--- Set up the OnShow hook for the CharacterFrame
+-- List of frames to hook
+local framesToHook = {
+    "CharacterFrame",
+    "ReputationFrame",
+    "SkillFrame",
+    "HonorFrame"
+    -- Add more frame names here as needed
+}
+
+-- Function to perform the action
+local function onClick()
+    if RuneFrameControlButton then
+        RuneFrameControlButton:Click()
+    end
+end
+
+-- Set up the OnShow hook for multiple frames
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function(self, event, ...)
-    if CharacterFrame then
-        CharacterFrame:HookScript("OnShow", function()
-            -- Perform the action you want when the CharacterFrame is shown
-            if RuneFrameControlButton then
-                RuneFrameControlButton:Click()
-            end
-        end)
+    for _, frameName in ipairs(framesToHook) do
+        local targetFrame = _G[frameName]
+        if targetFrame then
+            targetFrame:HookScript("OnShow", onClick)
+        end
     end
 end)
