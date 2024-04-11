@@ -7,7 +7,6 @@ local framesToHook = {
     "ReputationFrame",
     "SkillFrame",
     "HonorFrame"
-    -- Add more frame names here as needed
 }
 
 -- Function to perform the action
