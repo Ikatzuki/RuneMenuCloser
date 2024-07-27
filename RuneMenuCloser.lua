@@ -16,6 +16,11 @@ local function onClick()
     end
 end
 
+-- Function to handle tab changes
+local function onTabClick(self)
+    onClick()
+end
+
 -- Set up the OnShow hook for multiple frames
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function(self, event, ...)
@@ -24,5 +29,19 @@ frame:SetScript("OnEvent", function(self, event, ...)
         if targetFrame then
             targetFrame:HookScript("OnShow", onClick)
         end
+    end
+    
+    -- Hook tab buttons if they exist
+    if CharacterFrameTab1 then
+        CharacterFrameTab1:HookScript("OnClick", onTabClick)
+    end
+    if CharacterFrameTab3 then
+        CharacterFrameTab3:HookScript("OnClick", onTabClick)
+    end
+    if CharacterFrameTab4 then
+        CharacterFrameTab4:HookScript("OnClick", onTabClick)
+    end
+    if CharacterFrameTab5 then
+        CharacterFrameTab5:HookScript("OnClick", onTabClick)
     end
 end)
